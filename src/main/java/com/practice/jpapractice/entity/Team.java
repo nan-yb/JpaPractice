@@ -1,6 +1,7 @@
 package com.practice.jpapractice.entity;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.Getter;
@@ -18,6 +19,9 @@ public class Team {
     private String id;
 
     private String name;
+
+    @Embedded
+    private Address address;
 
     public Team(String id, String name) {
         this.id = id;

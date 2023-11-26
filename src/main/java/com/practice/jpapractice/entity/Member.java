@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -14,14 +17,13 @@ public class Member {
     @Column(name="MEMBER_ID")
     private String id;
 
-    private String username;
+    private String name;
 
-    @ManyToOne
-    @JoinColumn(name="TEAM_ID")
-    private Team team;
+    @Embedded
+    private Address address;
 
-    public Member(String id, String username) {
-        this.id = id;
-        this.username = username;
-    }
+    @OneToMany(mappedBy = "member")
+    private List<Order> orders = new ArrayList<Order>();
+
+
 }
